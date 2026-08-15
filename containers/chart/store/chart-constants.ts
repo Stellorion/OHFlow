@@ -1,4 +1,4 @@
-// store/chart-constants.ts
+import { ChartColumn, ChartLine, ChartArea, ChartPie } from "lucide-react";
 
 export const COLOR_PALETTE = [
   "#2563eb", // Blue
@@ -14,4 +14,11 @@ export const COLOR_PALETTE = [
   "#495057", // Iron Grey
   "#adb5bd", // Pale Slate
   "#dee2e6", // Alabaster Grey
+] as const;
+
+export const CHART_TYPES = [
+  { id: "bar", label: "Bar", icon: ChartColumn },
+  { id: "line", label: "Line", icon: ChartLine },
+  { id: "area", label: "Area", icon: ChartArea },
+  { id: "pie", label: "Pie", icon: ChartPie },
 ] as const;

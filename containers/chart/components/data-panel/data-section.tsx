@@ -28,7 +28,7 @@ export default function DataSection() {
   const data = useChartStore((state) => state.data);
 
   return (
-    <Card>
+    <Card className="pb-0">
       <div className="flex justify-between">
         <CardHeader>
           <CardTitle>Data</CardTitle>
@@ -43,8 +43,8 @@ export default function DataSection() {
           Row
         </Button>
       </div>
-      <CardContent>
-        <div className="rounded-md border">
+      <CardContent className="px-0">
+        <div className="rounded-md border-t">
           <Table>
             <TableHeader>
               <TableRow>

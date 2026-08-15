@@ -129,3 +129,20 @@
     @apply font-outfit;
   }
 }
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  /* Target element and its children */
+  .print-container, .print-container * {
+    visibility: visible;
+  }
+  .print-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100% !important;
+    height: auto !important;
+  }
+}

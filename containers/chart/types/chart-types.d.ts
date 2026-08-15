@@ -17,6 +17,11 @@ export interface DataRow {
 export interface ChartStore {
   chartType: ChartType;
   setChartType: (type: ChartType) => void;
+  chartTitle: String;
+  updateChartTitle: (id: string, newLabel: string) => void;
+  chartSubtitle: String;
+  updateChartSubtitle: (id: string, newLabel: string) => void;
+  
   series: Series[];
   data: DataRow[];
   addSeries: (label: string) => void;

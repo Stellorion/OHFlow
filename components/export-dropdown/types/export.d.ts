@@ -1,0 +1,22 @@
+export type ExportFormat = "png" | "svg" | "pdf";
+export type ExportTheme = "light" | "dark" | "system";
+
+export interface ExportStore {
+  exportFormat: ExportFormat;
+  setExportFormat: (format: ExportFormat) => void;
+  exportTheme: ExportTheme;
+  setExportTheme: (theme: ExportTheme) => void;
+  exportWidth: number;
+  setExportWidth: (width: number) => void;
+  exportHeight: number;
+  setExportHeight: (height: number) => void;
+  isExporting: boolean;
+  setIsExporting: (isExporting: boolean) => void;
+}
+
+export interface ExportOptions {
+  chartRef: RefObject<HTMLDivElement | null>;
+  fileName?: string;
+}
+
+export type ExportDropdownProps = ExportOptions;

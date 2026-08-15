@@ -5,6 +5,24 @@ export const useChartStore = create<ChartStore>((set) => ({
   chartType: "bar",
   setChartType: (chartType) => set({ chartType }),
 
+  chartTitle: "Phones vs Desktop",
+  updateChartTitle: (id, newLabel) =>
+    set((state) => ({
+      series: state.series.map((s) =>
+        s.id === id ? { ...s, label: newLabel } : s,
+      ),
+    })),
+
+
+  chartSubtitle: "I don't know",
+  updateChartSubtitle: (id, newLabel) =>
+    set((state) => ({
+      series: state.series.map((s) =>
+        s.id === id ? { ...s, label: newLabel } : s,
+      ),
+    })),
+
+
   series: [
     { id: "desktop", label: "Desktop", color: "var(--chart-1)" },
     { id: "mobile", label: "Mobile", color: "var(--chart-2)" },
