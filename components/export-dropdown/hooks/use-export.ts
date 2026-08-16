@@ -24,26 +24,32 @@ export function useExport({ chartRef, fileName = "chart" }: ExportOptions) {
 
   const getExportOptions = () => {
     const isDark = isDarkMode();
-    const currentBounds = chartRef.current?.getBoundingClientRect();
+    const bounds = chartRef.current?.getBoundingClientRect();
 
-    // Calculate scale factors based on current on-screen size versus requested export dimensions
-    const scaleX = currentBounds?.width ? exportWidth / currentBounds.width : 1;
-    const scaleY = currentBounds?.height
-      ? exportHeight / currentBounds.height
-      : 1;
-    const scale = Math.min(scaleX, scaleY);
+    const currentWidth = bounds?.width || 1;
+    const currentHeight = bounds?.height || 1;
+
+    const scaleX = exportWidth / currentWidth;
+    const scaleY = exportHeight / currentHeight;
 
     return {
+      canvasWidth: exportWidth,
+      canvasHeight: exportHeight,
+
       width: exportWidth,
       height: exportHeight,
+
       filter: filterNonExportable,
       cacheBust: true,
+
       backgroundColor: isDark ? "#09090b" : "#ffffff",
       style: {
-        width: `${exportWidth}px`,
-        height: `${exportHeight}px`,
-        transform: `scale(${scale})`,
+        width: `${currentWidth}px`,
+        height: `${currentHeight}px`,
+
+        transform: `scale(${scaleX}, ${scaleY})`,
         transformOrigin: "top left",
+
         backgroundColor: isDark ? "#09090b" : "#ffffff",
         color: isDark ? "#f4f4f5" : "#09090b",
         colorScheme: isDark ? "dark" : "light",

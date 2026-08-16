@@ -23,7 +23,7 @@ export default function TypeSection() {
                 key={id}
                 value={id}
                 variant="outline"
-                className="flex flex-col h-auto py-2.5 size-15"
+                className="flex flex-col h-auto py-2.5 size-17.5"
               >
                 <Icon className="size-5" />
                 <span>{label}</span>

@@ -6,22 +6,10 @@ export const useChartStore = create<ChartStore>((set) => ({
   setChartType: (chartType) => set({ chartType }),
 
   chartTitle: "Phones vs Desktop",
-  updateChartTitle: (id, newLabel) =>
-    set((state) => ({
-      series: state.series.map((s) =>
-        s.id === id ? { ...s, label: newLabel } : s,
-      ),
-    })),
+  updateChartTitle: (label) => set(() => ({ chartTitle: label })),
 
-
-  chartSubtitle: "I don't know",
-  updateChartSubtitle: (id, newLabel) =>
-    set((state) => ({
-      series: state.series.map((s) =>
-        s.id === id ? { ...s, label: newLabel } : s,
-      ),
-    })),
-
+  chartSubtitle: "Epic Rap Battle",
+  updateChartSubtitle: (label) => set(() => ({ chartSubtitle: label })),
 
   series: [
     { id: "desktop", label: "Desktop", color: "var(--chart-1)" },
