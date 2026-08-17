@@ -3,7 +3,8 @@
 import { Braces, SlidersHorizontal } from "lucide-react";
 import DataPanel from "./data-panel";
 import DesignPanel from "./design-panel";
-import { TabbedSidebar, TabItem } from "@/components/tabbed-siderbar";
+import { TabbedSidebar } from "@/components/tabbed-siderbar";
+import { TabItem } from "@/types/sidebar";
 
 const SIDEBAR_TABS: TabItem[] = [
   {
@@ -21,5 +22,5 @@ const SIDEBAR_TABS: TabItem[] = [
 ];
 
 export function Sidebar() {
-  return <TabbedSidebar tabs={SIDEBAR_TABS} defaultValue="data" className="w-[20%]" />;
+  return <TabbedSidebar tabs={SIDEBAR_TABS} defaultValue="data" className="w-full h-full" />;
 }

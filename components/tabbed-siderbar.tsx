@@ -1,21 +1,8 @@
 "use client";
 
-import { ReactNode } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-
-export interface TabItem {
-  id: string;
-  label: string;
-  icon?: ReactNode;
-  content: ReactNode;
-}
-
-interface TabbedSidebarProps {
-  tabs: TabItem[];
-  defaultValue?: string;
-  className?: string;
-}
+import { TabbedSidebarProps } from "@/types/sidebar";
 
 export function TabbedSidebar({
   tabs,
