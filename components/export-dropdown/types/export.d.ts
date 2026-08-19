@@ -15,8 +15,6 @@ export interface ExportableCardProps {
 export interface ExportStore {
   exportFormat: ExportFormat;
   setExportFormat: (format: ExportFormat) => void;
-  exportTheme: ExportTheme;
-  setExportTheme: (theme: ExportTheme) => void;
   exportWidth: number;
   setExportWidth: (width: number) => void;
   exportHeight: number;

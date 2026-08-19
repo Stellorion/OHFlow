@@ -5,7 +5,8 @@ import { useColorPicker } from "@/store/use-color-picker";
 import { ColorDropdown } from "@/components/color-dropdown";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator"
-import { BG_COLOR_PALETTE, AXIS_GRID_PALETTE } from "../../store/chart-constants";
+import { BG_COLOR_PALETTE } from "../../store/color-constants";
+import { AXIS_GRID_PALETTE } from "../../store/chart-constants";
 
 export default function CanvasSection() {
   const canvasColor = useColorPicker((state) => state.canvasColor);

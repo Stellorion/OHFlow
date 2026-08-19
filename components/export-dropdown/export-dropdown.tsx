@@ -10,7 +10,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { ExportDropdownProps } from "./types/export";
 import { ExportOptions } from "./components/export-options";
-import { ThemeSelection } from "./components/theme-selection";
 import { DimensionInputs } from "./components/dimension-inputs";
 import { DimensionPresets } from "./components/dimension-presets";
 import { ExportButton } from "./components/export-button";
@@ -40,10 +39,6 @@ export function ExportDropdown({
           <DimensionInputs />
 
         </DropdownMenuGroup>
-
-        <DropdownMenuSeparator />
-        
-        <ThemeSelection />
 
       </DropdownMenuContent>
     </DropdownMenu>

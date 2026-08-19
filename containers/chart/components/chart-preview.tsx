@@ -7,9 +7,7 @@ import { ExportableCard } from "@/components/exportable-card";
 import { useColorPicker } from "@/store/use-color-picker";
 
 export default function ChartPreview() {
-  const { chartTitle, chartSubtitle } = useChartStore();
-  const { series, data } = useChartStore();
-
+  const { chartTitle, chartSubtitle, series, data } = useChartStore();
   const { canvasColor, gridColor, axisColor } = useColorPicker();
 
   const chartConfig = series.reduce(

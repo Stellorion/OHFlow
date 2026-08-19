@@ -7,7 +7,6 @@ export function useExport({ chartRef, fileName = "chart" }: ExportOptions) {
     isExporting,
     setIsExporting,
     setExportFormat,
-    exportTheme,
     exportWidth,
     exportHeight,
   } = useExportStore();
@@ -16,14 +15,7 @@ export function useExport({ chartRef, fileName = "chart" }: ExportOptions) {
     return !node.hasAttribute?.("data-export-ignore");
   };
 
-  const isDarkMode = () => {
-    if (exportTheme === "dark") return true;
-    if (exportTheme === "light") return false;
-    return document.documentElement.classList.contains("dark");
-  };
-
   const getExportOptions = () => {
-    const isDark = isDarkMode();
     const bounds = chartRef.current?.getBoundingClientRect();
 
     const currentWidth = bounds?.width || 1;
@@ -42,17 +34,12 @@ export function useExport({ chartRef, fileName = "chart" }: ExportOptions) {
       filter: filterNonExportable,
       cacheBust: true,
 
-      backgroundColor: isDark ? "#09090b" : "#ffffff",
       style: {
         width: `${currentWidth}px`,
         height: `${currentHeight}px`,
 
         transform: `scale(${scaleX}, ${scaleY})`,
         transformOrigin: "top left",
-
-        backgroundColor: isDark ? "#09090b" : "#ffffff",
-        color: isDark ? "#f4f4f5" : "#09090b",
-        colorScheme: isDark ? "dark" : "light",
       },
     };
   };
@@ -114,7 +101,8 @@ export function useExport({ chartRef, fileName = "chart" }: ExportOptions) {
                   justify-content: center;
                   align-items: center;
                   min-height: 100vh;
-                  background-color: ${options.backgroundColor};
+                  background-color: transparent;
+                  border-radius: 0;
                 }
                 img {
                   width: 100%;

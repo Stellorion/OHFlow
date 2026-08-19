@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 export default function OptionSection() {
   return (
     <Card>
-      <div className="flex justify-between">
+      <div className="flex flex-col justify-between gap-3">
         <CardHeader>
           <CardTitle>Options</CardTitle>
         </CardHeader>

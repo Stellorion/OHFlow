@@ -4,10 +4,7 @@ import { ExportStore } from "../types/export";
 export const useExportStore = create<ExportStore>((set) => ({
   exportFormat: "png",
   setExportFormat: (format) => set({ exportFormat: format }),
-
-  exportTheme: "system",
-  setExportTheme: (theme) => set({ exportTheme: theme }),
-
+  
   exportWidth: 1200,
   setExportWidth: (width) => set({ exportWidth: width }),
 

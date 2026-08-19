@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/card";
 import { ExportDropdown } from "@/components/export-dropdown/export-dropdown";
 import { ExportableCardProps } from "./export-dropdown/types/export";
-import { DARK_BG_PALETTE } from "@/containers/chart/store/chart-constants";
+import { DARK_BG_PALETTE } from "@/containers/chart/store/color-constants";
 
 export function ExportableCard({
   title = "Phones vs Desktop",
