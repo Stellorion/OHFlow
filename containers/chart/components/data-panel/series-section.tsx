@@ -1,16 +1,14 @@
 "use client";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Plus, Trash2 } from "lucide-react";
+
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
+
 import { useChartStore } from "../../store/use-chart-store";
-import { COLOR_PALETTE } from "../../store/chart-constants";
+import { SERIES_COLOR_PALETTE } from "../../store/chart-constants";
+import { ColorDropdown } from "@/components/color-dropdown";
 
 export default function SeriesSection() {
   const addSeries = useChartStore((state) => state.addSeries);
@@ -38,36 +36,11 @@ export default function SeriesSection() {
       <CardContent className="flex flex-col gap-2">
         {series.map((item) => (
           <div key={item.id} className="flex items-center gap-2">
-            <Popover>
-              <PopoverTrigger>
-                <button
-                  type="button"
-                  className="size-7 shrink-0 rounded-md border border-border shadow-sm transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-ring"
-                  style={{ backgroundColor: item.color }}
-                  title="Change color"
-                />
-              </PopoverTrigger>
-              <PopoverContent className="w-auto p-3" align="start">
-                <div className="text-sm font-medium text-muted-foreground">
-                  Select Color
-                </div>
-                <div className="grid grid-cols-5 gap-2">
-                  {COLOR_PALETTE.map((color) => (
-                    <button
-                      key={color}
-                      type="button"
-                      onClick={() => updateSeriesColor(item.id, color)}
-                      className="size-6 rounded-full border border-border flex items-center justify-center transition-transform hover:scale-110"
-                      style={{ backgroundColor: color }}
-                    >
-                      {item.color === color && (
-                        <span />
-                      )}
-                    </button>
-                  ))}
-                </div>
-              </PopoverContent>
-            </Popover>
+            <ColorDropdown
+              value={item.color}
+              onChange={(color) => updateSeriesColor(item.id, color)}
+              palette={SERIES_COLOR_PALETTE}
+            />
 
             <Input
               value={item.label}

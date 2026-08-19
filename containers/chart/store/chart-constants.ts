@@ -1,24 +1,55 @@
 import { ChartColumn, ChartLine, ChartArea, ChartPie } from "lucide-react";
 
-export const COLOR_PALETTE = [
+export const SERIES_COLOR_PALETTE = [
   "#2563eb", // Blue
-  "#3b82f6", // Light Blue
+  "#2d6a4f", // Hunter Green
   "#10b981", // Emerald
   "#06b6d4", // Cyan
   "#f59e0b", // Amber
   "#ef4444", // Red
   "#ec4899", // Pink
-  "#8b5cf6", // Purple
-  "#6366f1", // Indigo
+  "#8338EC", // Purple
+  "#7F0799", // Indigo
+  "#FFC07F", // Light Caramel
+  "#99582a", // Chocolate Brown
   "#212529", // Shadow Grey
   "#495057", // Iron Grey
   "#adb5bd", // Pale Slate
   "#dee2e6", // Alabaster Grey
-] as const;
+];
+
+export const DARK_BG_PALETTE = [
+  "#171717", // Charcoal
+  "#00171f", // Deep Teal
+  "#081c15", // Forest Green
+  "#231942", // Deep Purple
+  "#230505", // Deep Red
+]
+
+export const LIGHT_BG_PALETTE = [
+  // Lighter
+  "#DCEBFF", // Soft Blue
+  "#DDF5E3", // Soft Green
+  "#E9DFFF", // Soft Purple
+  "#FFE5C2", // Soft Peach
+  "#FFFFFF", // White
+];
+
+export const BG_COLOR_PALETTE = [...DARK_BG_PALETTE, ...LIGHT_BG_PALETTE];
+
+export const AXIS_GRID_PALETTE = [
+  "#e2e8f0", // Soft Gray
+  "#cbd5e1", // Slate Gray
+  "#94a3b8", // Medium Gray
+  "#64748b", // Dark Slate
+  "#334155", // Deep Charcoal
+  "#1e293b", // Near Black
+  "#ffffff", // Pure White
+];
 
 export const CHART_TYPES = [
-  { id: "bar", label: "Bar", icon: ChartColumn },
+  { id: "bar",  label: "Bar",  icon: ChartColumn },
   { id: "line", label: "Line", icon: ChartLine },
   { id: "area", label: "Area", icon: ChartArea },
-  { id: "pie", label: "Pie", icon: ChartPie },
+  { id: "pie",  label: "Pie",  icon: ChartPie },
 ] as const;

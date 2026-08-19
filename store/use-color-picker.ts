@@ -1,11 +1,14 @@
 import { create } from "zustand";
-import { CanvasColorStore } from "@/types/color-picker";
+import { CanvasColorStore } from "@/types/color-dropdown";
 
 export const useColorPicker = create<CanvasColorStore>((set) => ({
   canvasColor: "#ffffff",
   setCanvasColor: (color) => set({ canvasColor: color }),
 
-  cursorColor: "rgba(0, 0, 0, 0.05)",
-  setCursorColor: (color) => set({ cursorColor: color }),
+  gridColor: "#e2e8f0",
+  setGridColor: (color) => set({ gridColor: color }),
+
+  axisColor: "#64748b",
+  setAxisColor: (color) => set({ axisColor: color }),
 }));
 

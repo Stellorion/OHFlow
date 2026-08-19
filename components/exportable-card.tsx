@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/card";
 import { ExportDropdown } from "@/components/export-dropdown/export-dropdown";
 import { ExportableCardProps } from "./export-dropdown/types/export";
+import { DARK_BG_PALETTE } from "@/containers/chart/store/chart-constants";
 
 export function ExportableCard({
   title = "Phones vs Desktop",
@@ -23,13 +24,18 @@ export function ExportableCard({
 }: ExportableCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
 
+  const currentBg = typeof style?.backgroundColor === "string" ? style.backgroundColor.toUpperCase() : "";
+  const isDarkBg = DARK_BG_PALETTE.some((hex) => hex.toUpperCase() === currentBg);
+
+  const titleColor = isDarkBg ? "oklch(0.985 0 0)" : "oklch(0.145 0 0)";
+  const descriptionColor = isDarkBg ? "oklch(0.556 0 0)" : "oklch(0.708 0 0)";
+
   return (
     <Card ref={cardRef} className={className} style={style}>
       <CardHeader className="flex flex-row items-start justify-between pb-2">
         <div>
-          {typeof title === "string" ? <CardTitle className="text-2xl">{title}</CardTitle> : title}
-          {typeof subtitle === "string" ? (<CardDescription className="text-base">{subtitle}</CardDescription>) : (subtitle
-          )}
+          {typeof title === "string" ? <CardTitle className="text-2xl" style={{ color: titleColor}}>{title}</CardTitle> : title}
+          {typeof subtitle === "string" ? (<CardDescription className="text-base" style={{ color: descriptionColor}}>{subtitle}</CardDescription>) : (subtitle)}
         </div>
         <div className="flex items-center gap-2">
           {headerAction}
