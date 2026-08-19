@@ -4,7 +4,7 @@ import MobileViewNav from "@/components/mobile/mobile-view-nav";
 import { useLayoutStore } from "@/store/use-layout-store";
 import { SlidersHorizontal, View } from "lucide-react";
 
-import GraphPreview from "@/containers/chart/components/chart-preview";
+import ChartPreview from "@/containers/chart/components/chart-preview";
 import { Sidebar } from "@/containers/chart/components/sidebar";
 
 const NAV_ITEMS = [
@@ -22,7 +22,7 @@ export default function ChartLandingPage() {
         <Sidebar />
       </div>
       <div className={`w-full flex-1 overflow-y-auto pb-18 lg:pb-0 ${activeTab === "preview" ? "block" : "hidden lg:block"}`}>
-        <GraphPreview />
+        <ChartPreview />
       </div>
       <MobileViewNav
         items={NAV_ITEMS}

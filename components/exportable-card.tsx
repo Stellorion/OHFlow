@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, ReactNode } from "react";
+import { useRef, ReactNode, CSSProperties } from "react";
 import {
   Card,
   CardContent,
@@ -9,16 +9,7 @@ import {
   CardDescription,
 } from "@/components/ui/card";
 import { ExportDropdown } from "@/components/export-dropdown/export-dropdown";
-
-interface ExportableCardProps {
-  title?: ReactNode;
-  subtitle?: ReactNode;
-  fileName?: string;
-  children: ReactNode;
-  headerAction?: ReactNode;
-  className?: string;
-  contentClassName?: string;
-}
+import { ExportableCardProps } from "./export-dropdown/types/export";
 
 export function ExportableCard({
   title = "Phones vs Desktop",
@@ -27,12 +18,13 @@ export function ExportableCard({
   children,
   headerAction,
   className = "w-full h-full flex flex-col justify-between",
+  style,
   contentClassName = "flex-1 min-h-0 w-full h-full",
 }: ExportableCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
 
   return (
-    <Card ref={cardRef} className={className}>
+    <Card ref={cardRef} className={className} style={style}>
       <CardHeader className="flex flex-row items-start justify-between pb-2">
         <div>
           {typeof title === "string" ? <CardTitle className="text-2xl">{title}</CardTitle> : title}

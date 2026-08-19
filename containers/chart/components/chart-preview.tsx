@@ -1,13 +1,15 @@
 "use client";
 
-import { Bar, BarChart, CartesianGrid, XAxis } from "recharts";
+import { Bar, BarChart, CartesianGrid, XAxis, Rectangle } from "recharts";
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 import { useChartStore } from "../store/use-chart-store";
 import { ExportableCard } from "@/components/exportable-card";
+import { useColorPicker } from "@/store/use-color-picker";
 
-export default function GraphPreview() {
+export default function ChartPreview() {
   const { chartTitle, chartSubtitle } = useChartStore();
   const { series, data } = useChartStore();
+  const { canvasColor } = useColorPicker();
 
   const chartConfig = series.reduce(
     (acc, item) => {
@@ -18,7 +20,12 @@ export default function GraphPreview() {
   );
 
   return (
-    <ExportableCard title={chartTitle} subtitle={chartSubtitle} fileName="chart-export">
+    <ExportableCard 
+      style={{ backgroundColor: canvasColor }}
+      title={chartTitle} 
+      subtitle={chartSubtitle} 
+      fileName="chart-export"
+    >
       <ChartContainer config={chartConfig} className="w-full h-full min-h-75">
         <BarChart
           accessibilityLayer
@@ -27,9 +34,14 @@ export default function GraphPreview() {
         >
           <CartesianGrid vertical={false} />
           <XAxis dataKey="category" tickLine={false} axisLine={false} />
-          <ChartTooltip content={<ChartTooltipContent indicator="dot" />} />
+          <ChartTooltip cursor={{ fill: "rgba(0, 0, 0, 0.1)" }} content={<ChartTooltipContent indicator="dot" />} />
           {series.map((item) => (
-            <Bar key={item.id} dataKey={item.id} fill={item.color} radius={4} />
+            <Bar 
+              key={item.id} 
+              dataKey={item.id} 
+              fill={item.color} 
+              radius={4} 
+            />
           ))}
         </BarChart>
       </ChartContainer>
