@@ -1,7 +1,5 @@
 export type ChartType = "bar" | "line" | "area" | "pie";
 
-export type LegendPosition = "top" | "bottom" | "right";
-
 export interface Series {
   id: string;
   label: string;
@@ -23,12 +21,32 @@ export interface ChartStore {
   updateChartSubtitle: (Label: string) => void;
   
   series: Series[];
-  data: DataRow[];
   addSeries: (label: string) => void;
   removeSeries: (id: string) => void;
   updateSeriesLabel: (id: string, newLabel: string) => void;
   updateSeriesColor: (id: string, newColor: string) => void;
+
+  data: DataRow[];
   addRow: () => void;
   removeRow: (id: string) => void;
   updateCell: (rowId: string, key: string, value: string | number) => void;
+}
+
+export type LegendPosition = "top" | "bottom" | "left" | "right";
+
+export interface ChartOptionsStore {
+  showLegend: boolean;
+  setShowLegend: (show: boolean) => void;
+  
+  legendPosition: LegendPosition;
+  setLegendPosition: (position: LegendPosition) => void;
+
+  showValueLabels: boolean;
+  setShowValueLabels: (show: boolean) => void;
+
+  showGridLines: boolean;
+  setShowGridLines: (show: boolean) => void;
+
+  isStacked: boolean;
+  setIsStacked: (stacked: boolean) => void;
 }

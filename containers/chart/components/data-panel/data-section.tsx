@@ -9,23 +9,13 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 import { Plus, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useChartStore } from "../../store/use-chart-store";
+import { useChartData } from "../../hooks/use-chart-data";
 
 export default function DataSection() {
-  const addRow = useChartStore((state) => state.addRow);
-  const removeRow = useChartStore((state) => state.removeRow);
-  const updateCell = useChartStore((state) => state.updateCell);
-
-  const series = useChartStore((state) => state.series);
-  const data = useChartStore((state) => state.data);
+  const { data, series, addRow, removeRow, updateCell } = useChartData();
 
   return (
     <Card className="pb-0">
@@ -70,46 +60,30 @@ export default function DataSection() {
               {data.map((row) => (
                 <TableRow key={row.id}>
                   <TableCell>
-                    <Tooltip>
-                      <TooltipTrigger>
-                        <Input
-                          value={row.category ?? ""}
-                          onChange={(e) =>
-                            updateCell(row.id, "category", e.target.value)
-                          }
-                          className="w-18 h-8 text-sm"
-                          placeholder="Category"
-                        />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>{row.category}</p>
-                      </TooltipContent>
-                    </Tooltip>
+                    <Input
+                      value={row.category ?? ""}
+                      onChange={(e) =>
+                        updateCell(row.id, "category", e.target.value)
+                      }
+                      className="w-18 h-8 text-sm"
+                      placeholder="Category"
+                    />
                   </TableCell>
 
                   {series.map((s) => (
                     <TableCell key={s.id}>
-                      <Tooltip>
-                        <TooltipTrigger>
-                          <Input
-                            type="number"
-                            value={row[s.id] ?? 0}
-                            onChange={(e) =>
-                              updateCell(
-                                row.id,
-                                s.id,
-                                e.target.value === ""
-                                  ? ""
-                                  : Number(e.target.value),
-                              )
-                            }
-                            className="h-8 text-sm font-mono"
-                          />
-                        </TooltipTrigger>
-                        <TooltipContent>
-                          <p>{row[s.id] ?? 0}</p>
-                        </TooltipContent>
-                      </Tooltip>
+                      <Input
+                        type="number"
+                        value={row[s.id] ?? 0}
+                        onChange={(e) =>
+                          updateCell(
+                            row.id,
+                            s.id,
+                            e.target.value === "" ? "" : Number(e.target.value),
+                          )
+                        }
+                        className="h-8 text-sm font-mono"
+                      />
                     </TableCell>
                   ))}
 

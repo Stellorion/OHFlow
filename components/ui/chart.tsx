@@ -278,6 +278,7 @@ function ChartLegendContent({
   payload,
   verticalAlign = "bottom",
   nameKey,
+  style,
 }: React.ComponentProps<"div"> & {
   hideIcon?: boolean
   nameKey?: string
@@ -290,6 +291,7 @@ function ChartLegendContent({
 
   return (
     <div
+      style={style}
       className={cn(
         "flex items-center justify-center gap-4",
         verticalAlign === "top" ? "pb-3" : "pt-3",
@@ -313,7 +315,7 @@ function ChartLegendContent({
                 <itemConfig.icon />
               ) : (
                 <div
-                  className="h-2 w-2 shrink-0 rounded-xs"
+                  className="h-4 w-4 shrink-0 rounded-xs"
                   style={{
                     backgroundColor: item.color,
                   }}

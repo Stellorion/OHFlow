@@ -6,16 +6,18 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
-import { useChartStore } from "../../store/use-chart-store";
+import { useChartSeries } from "../../hooks/use-chart-series";
 import { SERIES_COLOR_PALETTE } from "../../store/chart-constants";
 import { ColorDropdown } from "@/components/color-dropdown";
 
 export default function SeriesSection() {
-  const addSeries = useChartStore((state) => state.addSeries);
-  const removeSeries = useChartStore((state) => state.removeSeries);
-  const updateSeriesLabel = useChartStore((state) => state.updateSeriesLabel);
-  const updateSeriesColor = useChartStore((state) => state.updateSeriesColor);
-  const series = useChartStore((state) => state.series);
+  const {
+    series,
+    addSeries,
+    removeSeries,
+    updateSeriesLabel,
+    updateSeriesColor,
+  } = useChartSeries();
 
   return (
     <Card>

@@ -4,19 +4,20 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useColorPicker } from "@/store/use-color-picker";
 import { ColorDropdown } from "@/components/color-dropdown";
 import { Label } from "@/components/ui/label";
-import { Separator } from "@/components/ui/separator"
+import { Separator } from "@/components/ui/separator";
 import { BG_COLOR_PALETTE } from "../../store/color-constants";
 import { AXIS_GRID_PALETTE } from "../../store/chart-constants";
+import { useChartColors } from "../../hooks/use-chart-colors";
 
 export default function CanvasSection() {
-  const canvasColor = useColorPicker((state) => state.canvasColor);
-  const setCanvasColor = useColorPicker((state) => state.setCanvasColor);
-
-  const gridColor = useColorPicker((state) => state.gridColor);
-  const setGridColor = useColorPicker((state) => state.setGridColor);
-
-  const axisColor = useColorPicker((state) => state.axisColor);
-  const setAxisColor = useColorPicker((state) => state.setAxisColor);
+  const {
+    canvasColor,
+    setCanvasColor,
+    gridColor,
+    setGridColor,
+    axisColor,
+    setAxisColor,
+  } = useChartColors();
 
   return (
     <Card>
